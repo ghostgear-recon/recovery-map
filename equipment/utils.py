@@ -18,26 +18,23 @@ def _convert_to_degress(value):
     return d + (m / 60.0) + (s / 3600.0)
 
 
-def get_lat_lon(exif_data):
-    """Returns the latitude and longitude, if available, from the provided exif_data (obtained through get_exif_data above)"""
+def get_lat_lon(gps_exif):
+    """Returns the latitude and longitude, if available, from the provided exif_data"""
     lat = None
     lon = None
 
-    if "GPSInfo" in exif_data:
-        gps_info = exif_data["GPSInfo"]
+    gps_latitude = gps_exif.get('GPSLatitude', None)
+    gps_latitude_ref = gps_exif.get('GPSLatitudeRef', None)
+    gps_longitude = gps_exif.get('GPSLongitude', None)
+    gps_longitude_ref = gps_exif.get('GPSLongitudeRef', None)
 
-        gps_latitude = gps_info.get('GPSLatitude', None)
-        gps_latitude_ref = gps_info.get('GPSLatitudeRef', None)
-        gps_longitude = gps_info.get('GPSLongitude', None)
-        gps_longitude_ref = gps_info.get('GPSLongitudeRef', None)
+    if gps_latitude and gps_latitude_ref and gps_longitude and gps_longitude_ref:
+        lat = _convert_to_degress(gps_latitude)
+        if gps_latitude_ref != "N":
+            lat = 0 - lat
 
-        if gps_latitude and gps_latitude_ref and gps_longitude and gps_longitude_ref:
-            lat = _convert_to_degress(gps_latitude)
-            if gps_latitude_ref != "N":
-                lat = 0 - lat
-
-            lon = _convert_to_degress(gps_longitude)
-            if gps_longitude_ref != "E":
-                lon = 0 - lon
+        lon = _convert_to_degress(gps_longitude)
+        if gps_longitude_ref != "E":
+            lon = 0 - lon
 
     return lat, lon
