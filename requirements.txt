@@ -1,5 +1,5 @@
 Django==1.9.5
-djangorestframework==3.3.3
+Pillow
 psycopg2==2.6.1
 google-api-python-client
 gunicorn==19.4.5
