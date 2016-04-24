@@ -7,6 +7,8 @@ function populateMap() {
     $.get(appUrl, function(data) {
         L.mapbox.accessToken = 'pk.eyJ1IjoiZWNvYW5kcmV3dHJjIiwiYSI6InZ0MzhibUkifQ.Q0qYLMThqHqmAJ3q3dxvog';
         var map = L.mapbox.map('map', 'mapbox.streets').setView([37.5871329,-121.9321825], 9);
+        L.mapbox.styleLayer('mapbox://styles/ecoandrewtrc/cindhd1rh000gadkvfv0wxqkv').addTo(map);
+
         if (data) {
         	var marker;
         	var markers = data.equipment;
