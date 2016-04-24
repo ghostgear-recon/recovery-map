@@ -17,7 +17,7 @@ function populateMap() {
             	    icon: L.mapbox.marker.icon({
             	      'marker-color': '#f86767'
             	    }),
-            	    draggable: true
+            	    draggable: false
             	});
             	if (markers[i].image) {
 	            	var feature = marker.feature;
