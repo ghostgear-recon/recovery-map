@@ -27,7 +27,14 @@ class CreateEquipmentView(View):
         gps_exif = dict((ExifTags.GPSTAGS[k], v) for k, v in exif['GPSInfo'].items() if k in ExifTags.GPSTAGS)
         latitude, longitude = get_lat_lon(gps_exif)
 
-        Equipment.objects.create(latitude=latitude, longitude=longitude, image=input_image)
+        equipment = Equipment.objects.create(latitude=latitude, longitude=longitude, image=input_image)
+
+        max_dimension, width, height = 512, equipment.image.width, equipment.image.height
+        ratio = min(float(max_dimension)/width, float(max_dimension)/height)
+        if ratio < 1:
+            equipment.image = image.resize((int(ratio*width), int(ratio*height)), Image.ANTIALIAS)
+            equipment.save()
+
         return HttpResponse()
 
 
