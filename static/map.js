@@ -1,9 +1,13 @@
 function populateMap() {
-    var appUrl = 'http://ghostgearrecon.us/equipment/list';
+	var appUrl = 'http://ghostgearrecon.us/equipment/list';
     var data = {};
-    $.get(appUrl, function(data) {
-        console.log(data);
-        L.mapbox.accessToken = 'pk.eyJ1IjoiZWNvYW5kcmV3dHJjIiwiYSI6InZ0MzhibUkifQ.Q0qYLMThqHqmAJ3q3dxvog';
-        var map = L.mapbox.map('map', 'mapbox.streets').setView([40, -74.50], 9);
-    });
+	$.get(url, function(data) {
+			console.log(data);
+			L.mapbox.accessToken = '<your access token here>';
+			var map = L.mapbox.map('map', 'mapbox.k8xv42t9').setView([38.909671288923, -77.034084142948], 13).featureLayer.setGeoJSON(data);
+		}
+	});
 }
+
+
+
