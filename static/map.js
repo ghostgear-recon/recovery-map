@@ -10,39 +10,40 @@ function populateMap() {
 
     $.get(appUrl, function(data) {
         if (data) {
-        	var marker;
-        	var markers = data.equipment;
+            var marker;
+            var markers = data.equipment;
             for (var i = 0; i < markers.length; i++) {
-            	marker = L.marker([markers[i].latitude, markers[i].longitude], {
-            	    icon: L.mapbox.marker.icon({
-            	      'marker-color': '#f86767'
-            	    }),
-            	    draggable: false
-            	});
-            	if (markers[i].image) {
-	            	var feature = marker.feature;
-		            // Create custom popup content
-		            var popupContent =  '<a target="_blank" class="popup">' +
-		                                    '<img src="' + markers[i].image + '" />' +
-		                                    '<span>Date: ' + markers[i].created + '</span>' +
-		                                '</a>';
+                var color = markers[i].retrieved ? '#ffffbf' : '#fc8d59';
+                marker = L.marker([markers[i].latitude, markers[i].longitude], {
+                    icon: L.mapbox.marker.icon({
+                        'marker-color': color
+                    }),
+                    draggable: false
+                });
+                if (markers[i].image) {
+                    var feature = marker.feature;
+                    // Create custom popup content
+                    var popupContent =  '<a target="_blank" class="popup">' +
+                        '<img src="' + markers[i].image + '" />' +
+                        '<span>Date: ' + markers[i].created + '</span>' +
+                        '</a>';
 
-		            marker.bindPopup(popupContent,{
-		                closeButton: false,
-		                minWidth: 320
-		            });
-            	}
-            	marker.addTo(map);
+                    marker.bindPopup(popupContent,{
+                        closeButton: false,
+                        minWidth: 320
+                    });
+                }
+                marker.addTo(map);
             }
         }
     });
 
 
     $("#changeView").on("click", function() {
-		var lat = $('#lat').val(), long = $('#long').val();
+        var lat = $('#lat').val(), long = $('#long').val();
 
-		if (lat && long) {
-			map.setView([ lat, long ], 9);
-		}
-	});
+        if (lat && long) {
+            map.setView([ lat, long ], 9);
+        }
+    });
 }
