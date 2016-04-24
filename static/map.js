@@ -4,6 +4,6 @@ function populateMap() {
     $.get(appUrl, function(data) {
         console.log(data);
         L.mapbox.accessToken = 'pk.eyJ1IjoiZWNvYW5kcmV3dHJjIiwiYSI6InZ0MzhibUkifQ.Q0qYLMThqHqmAJ3q3dxvog';
-        var map = L.mapbox.map('map', 'mapbox.streets');
+        var map = L.mapbox.map('map', 'mapbox.streets').setView([40, -74.50], 9);
     });
 }
