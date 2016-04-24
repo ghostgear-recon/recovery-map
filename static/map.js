@@ -1,7 +1,7 @@
 function populateMap() {
     var appUrl = 'http://ghostgearrecon.us/equipment/list';
-//    var data = {equipment: [{latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"577ba35b-8ff1-42ec-827e-40dcfa3bc2b6", image:"http://d3ugpfptm7iph0.cloudfront.net/cdn/farfuture/FDMOZScMJHcIbSwO15_7LZFERD8UxD75HnTziOl1umA/mtime:1426523543/sites/default/files/us_files/1014736.jpg"},
-//                            {latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"c995a8a4-5de5-42c8-b57c-eec498be56dc", image:"http://d3ugpfptm7iph0.cloudfront.net/cdn/farfuture/FDMOZScMJHcIbSwO15_7LZFERD8UxD75HnTziOl1umA/mtime:1426523543/sites/default/files/us_files/1014736.jpg"}
+//    var data = {equipment: [{latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"577ba35b-8ff1-42ec-827e-40dcfa3bc2b6", date: "4/15/2016", image:"http://d3ugpfptm7iph0.cloudfront.net/cdn/farfuture/FDMOZScMJHcIbSwO15_7LZFERD8UxD75HnTziOl1umA/mtime:1426523543/sites/default/files/us_files/1014736.jpg"},
+//                            {latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"c995a8a4-5de5-42c8-b57c-eec498be56dc", date: "4/15/2016", image:"http://d3ugpfptm7iph0.cloudfront.net/cdn/farfuture/FDMOZScMJHcIbSwO15_7LZFERD8UxD75HnTziOl1umA/mtime:1426523543/sites/default/files/us_files/1014736.jpg"}
 //    ]};
     
     $.get(appUrl, function(data) {
@@ -22,9 +22,9 @@ function populateMap() {
 		            // Create custom popup content
 		            var popupContent =  '<a target="_blank" class="popup">' +
 		                                    '<img src="' + markers[i].image + '" />' +
+		                                    '<span>Date: ' + markers[i].date + '</span>' +
 		                                '</a>';
 		
-		            // http://leafletjs.com/reference.html#popup
 		            marker.bindPopup(popupContent,{
 		                closeButton: false,
 		                minWidth: 320
