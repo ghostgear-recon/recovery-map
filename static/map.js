@@ -3,12 +3,12 @@ function populateMap() {
 //    var data = {equipment: [{latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"577ba35b-8ff1-42ec-827e-40dcfa3bc2b6", date: "4/15/2016", image:"http://d3ugpfptm7iph0.cloudfront.net/cdn/farfuture/FDMOZScMJHcIbSwO15_7LZFERD8UxD75HnTziOl1umA/mtime:1426523543/sites/default/files/us_files/1014736.jpg"},
 //                            {latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"c995a8a4-5de5-42c8-b57c-eec498be56dc", date: "4/15/2016", image:"http://d3ugpfptm7iph0.cloudfront.net/cdn/farfuture/FDMOZScMJHcIbSwO15_7LZFERD8UxD75HnTziOl1umA/mtime:1426523543/sites/default/files/us_files/1014736.jpg"}
 //    ]};
-    
-    $.get(appUrl, function(data) {
-        L.mapbox.accessToken = 'pk.eyJ1IjoiZWNvYW5kcmV3dHJjIiwiYSI6InZ0MzhibUkifQ.Q0qYLMThqHqmAJ3q3dxvog';
-        var map = L.mapbox.map('map', 'mapbox.streets').setView([37.5871329,-121.9321825], 9);
-        L.mapbox.styleLayer('mapbox://styles/ecoandrewtrc/cindhd1rh000gadkvfv0wxqkv').addTo(map);
 
+    L.mapbox.accessToken = 'pk.eyJ1IjoiZWNvYW5kcmV3dHJjIiwiYSI6InZ0MzhibUkifQ.Q0qYLMThqHqmAJ3q3dxvog';
+    var map = L.mapbox.map('map', 'mapbox.streets').setView([37.5871329,-121.9321825], 9);
+    L.mapbox.styleLayer('mapbox://styles/ecoandrewtrc/cindhd1rh000gadkvfv0wxqkv').addTo(map);
+
+    $.get(appUrl, function(data) {
         if (data) {
         	var marker;
         	var markers = data.equipment;
