@@ -22,9 +22,9 @@ function populateMap() {
 		            // Create custom popup content
 		            var popupContent =  '<a target="_blank" class="popup">' +
 		                                    '<img src="' + markers[i].image + '" />' +
-		                                    '<span>Date: ' + markers[i].date + '</span>' +
+		                                    '<span>Date: ' + markers[i].created + '</span>' +
 		                                '</a>';
-		
+
 		            marker.bindPopup(popupContent,{
 		                closeButton: false,
 		                minWidth: 320
@@ -34,7 +34,7 @@ function populateMap() {
             }
         }
     });
-        
+
 
     $("#changeView").on("click", function() {
 		var lat = $('#lat').val(), long = $('#long').val();

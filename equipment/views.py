@@ -42,7 +42,9 @@ class ListEquipmentView(View):
                     'latitude':e.latitude,
                     'longitude': e.longitude,
                     'retrieved': e.retrieved,
-                    'uuid': e.uuid
+                    'uuid': e.uuid,
+                    'image': e.image.url,
+                    'created': e.created,
                 } for e in equipment
             ]
         })
