@@ -1,7 +1,7 @@
 function populateMap() {
     var appUrl = 'http://ghostgearrecon.us/equipment/list';
-//    var data = {equipment: [{latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"577ba35b-8ff1-42ec-827e-40dcfa3bc2b6"},
-//                            {latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"c995a8a4-5de5-42c8-b57c-eec498be56dc"}
+//    var data = {equipment: [{latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"577ba35b-8ff1-42ec-827e-40dcfa3bc2b6", image:"http://d3ugpfptm7iph0.cloudfront.net/cdn/farfuture/FDMOZScMJHcIbSwO15_7LZFERD8UxD75HnTziOl1umA/mtime:1426523543/sites/default/files/us_files/1014736.jpg"},
+//                            {latitude: "37.77740", longitude: "-122.40805", retrieved: "false", uuid:"c995a8a4-5de5-42c8-b57c-eec498be56dc", image:"http://d3ugpfptm7iph0.cloudfront.net/cdn/farfuture/FDMOZScMJHcIbSwO15_7LZFERD8UxD75HnTziOl1umA/mtime:1426523543/sites/default/files/us_files/1014736.jpg"}
 //    ]};
     
     $.get(appUrl, function(data) {
@@ -16,7 +16,21 @@ function populateMap() {
             	      'marker-color': '#f86767'
             	    }),
             	    draggable: true
-            	}).addTo(map);
+            	});
+            	if (markers[i].image) {
+	            	var feature = marker.feature;
+		            // Create custom popup content
+		            var popupContent =  '<a target="_blank" class="popup">' +
+		                                    '<img src="' + markers[i].image + '" />' +
+		                                '</a>';
+		
+		            // http://leafletjs.com/reference.html#popup
+		            marker.bindPopup(popupContent,{
+		                closeButton: false,
+		                minWidth: 320
+		            });
+            	}
+            	marker.addTo(map);
             }
         }
     });

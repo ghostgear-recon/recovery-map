@@ -20,3 +20,8 @@ span, input {
 input {
 	border-radius: 1px;
 }
+.leaflet-popup-content .popup img {
+	max-width: 100%;
+	max-height: 100%;
+	overflow: hidden;
+}
