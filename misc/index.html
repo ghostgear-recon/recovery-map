@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+    <script src="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.js"></script>
+  </head>
+  <body>
+    <div id="map" style="height: 100%;"></div>
+    <script>
+      var mymap = L.map('map').setView([37.5, -123], 9);
+      L.tileLayer('http://tileservice.charts.noaa.gov/tiles/50000_1/{z}/{x}/{y}.png')
+        .addTo(mymap)
+      
+    </script>
+  </body>
+</html>
